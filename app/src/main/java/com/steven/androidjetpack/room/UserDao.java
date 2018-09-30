@@ -1,6 +1,7 @@
 package com.steven.androidjetpack.room;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.DataSource;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -17,8 +18,8 @@ import java.util.List;
  */
 @Dao
 public interface UserDao {
-    @Query("SELECT * FROM user")
-    List<User> getAll();
+    @Query("SELECT * FROM user order by userName")
+    DataSource.Factory<Integer, User> getAllUserByName();
 
     @Query("SELECT * FROM user WHERE uid IN (:userIds)")
     List<User> loadAllByIds(int[] userIds);
@@ -37,5 +38,7 @@ public interface UserDao {
 
     @Delete
     void delete(User user);
+
+
 }
 

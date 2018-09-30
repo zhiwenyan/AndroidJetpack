@@ -1,6 +1,7 @@
 package com.steven.androidjetpack.room;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.DataSource;
 
 import java.util.List;
 
@@ -31,6 +32,9 @@ public class UserRepository {
 
     public LiveData<List<User>> getAllUsers() {
         return mDatabase.userDao().getAllUsers();
+    }
+    public DataSource.Factory<Integer, User> getAllUserByName() {
+        return mDatabase.userDao().getAllUserByName();
     }
 
 }
