@@ -15,12 +15,13 @@ import android.arch.lifecycle.ViewModel;
 public class NameViewModel extends ViewModel {
 
     // Create a LiveData with a String
-    private MutableLiveData<String> mCurrentName;
+    private MutableLiveData<String> mMutableLiveData;
 
     public MutableLiveData<String> getCurrentName() {
-        if (mCurrentName == null) {
-            mCurrentName = new MutableLiveData<>();
+        if (mMutableLiveData == null) {
+            mMutableLiveData = new MutableLiveData<>();
+
         }
-        return mCurrentName;
+        return mMutableLiveData;
     }
 }

@@ -25,17 +25,30 @@ import java.util.List;
 public class UserGenerator {
 
     private static final String[] NAMES = new String[]{
-            "Special edition", "New", "Cheap", "Quality", "Used"};
-    private static final int[] AGES = new int[]{22, 23, 24, 25, 26};
-
+            "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
+            "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale",
+            "Aisy Cendre", "Allgauer Emmentaler", "Alverca", "Ambert", "American Cheese",
+            "Aragon", "Ardi Gasna", "Ardrahan", "Armenian String", "Aromes au Gene de Marc",
+            "Asadero", "Asiago", "Aubisque Pyrenees", "Autun", "Avaxtskyr", "Baby Swiss",
+            "Tete de Moine", "Tetilla", "Texas Goat Cheese", "Tibet", "Tillamook Cheddar",
+            "Tilsit", "Timboon Brie", "Toma", "Tomme Brulee", "Tomme d'Abondance",
+            "Tomme de Chevre", "Tomme de Romans", "Tomme de Savoie", "Tomme des Chouans", "Tommes",
+            "Torta del Casar", "Toscanello", "Touree de L'Aubier", "Tourmalet",
+            "Trappe (Veritable)", "Trois Cornes De Vendee", "Tronchon", "Trou du Cru", "Truffe",
+            "Tupi", "Turunmaa", "Tymsboro", "Tyn Grug", "Tyning", "Ubriaco", "Ulloa",
+            "Vacherin-Fribourgeois", "Valencay", "Vasterbottenost", "Venaco", "Vendomois",
+            "Vieux Corse", "Vignotte", "Vulscombe", "Waimata Farmhouse Blue",
+            "Washed Rind Cheese (Australian)", "Waterloo", "Weichkaese", "Wellington",
+            "Wensleydale", "White Stilton", "Whitestone Farmhouse", "Wigmore", "Woodside Cabecou",
+            "Xanadu", "Xynotyro", "Yarg Cornish", "Yarra Valley Pyramid", "Yorkshire Blue",
+            "Zamorano", "Zanetti Grana Padano", "Zanetti Parmigiano Reggiano"};
 
     public static List<User> generateUser() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < NAMES.length; i++) {
             User user = new User();
-            user.setUid(i + 1);
             user.setUserName(NAMES[i]);
-            user.setAge(AGES[i]);
+            user.setAge(i + 1);
             users.add(user);
         }
         return users;

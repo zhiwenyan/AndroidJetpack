@@ -7,6 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
+import android.util.Log;
 
 import java.util.List;
 
@@ -17,8 +18,9 @@ import java.util.List;
  *
  * @author yanzhiwen
  */
-@Database(entities = {User.class}, version = 1,exportSchema = false)
+@Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
+    private static final String TAG = AppDatabase.class.getSimpleName();
     private static volatile AppDatabase sInstance;
 
     @VisibleForTesting
@@ -40,11 +42,13 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     private static AppDatabase buildDataBase(final Context context, final AppExecutors executors) {
+        //创建数据库
         return Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
                 .addCallback(new Callback() {
                     @Override
                     public void onCreate(@NonNull SupportSQLiteDatabase db) {
                         super.onCreate(db);
+                        //创建数据库的时候个调用
                         executors.diskIO().execute(() -> {
                             List<User> users = UserGenerator.generateUser();
                             AppDatabase appDatabase = AppDatabase.getInstance(context, executors);
@@ -58,7 +62,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static void insertData(final AppDatabase database, final List<User> users) {
         database.runInTransaction(() -> {
             database.userDao().insertAll(users);
-            System.out.println("----------插入数据成功");
+            Log.e(TAG, "insert data success");
         });
     }
 

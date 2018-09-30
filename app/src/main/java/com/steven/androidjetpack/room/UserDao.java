@@ -1,5 +1,6 @@
 package com.steven.androidjetpack.room;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -29,7 +30,7 @@ public interface UserDao {
     User findByAge(int age);
 
     @Query("SELECT * FROM user")
-    List<User> getAllUsers();
+    LiveData<List<User>> getAllUsers();
 
     @Insert
     void insertAll(List<User> users);
