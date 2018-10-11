@@ -13,6 +13,7 @@ import com.steven.androidjetpack.DataBinding.FoodActivity;
 import com.steven.androidjetpack.ViewModel.UserViewModel;
 import com.steven.androidjetpack.lifecycles.LifecycleObserverDemo;
 import com.steven.androidjetpack.liveData.NameViewModel;
+import com.steven.androidjetpack.navigation.NavigationActivity;
 import com.steven.androidjetpack.room.User;
 import com.steven.androidjetpack.room.UserInfoActivity;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_food).setOnClickListener(this);
         findViewById(R.id.btn_update).setOnClickListener(this);
         findViewById(R.id.btn_room).setOnClickListener(this);
+        findViewById(R.id.btn_navigation).setOnClickListener(this);
         getLifecycle().addObserver(new LifecycleObserverDemo());
 
 
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_room:
                 startActivity(new Intent(this, UserInfoActivity.class));
+                break;
+            case R.id.btn_navigation:
+                startActivity(new Intent(this, NavigationActivity.class));
 
                 break;
         }

@@ -6,6 +6,6 @@ package com.steven.androidjetpack.recyclerview;
  * 条目的点击事件
  */
 
-public interface ItemClickListener {
+public interface OnItemClickListener {
     void onItemClick(int position);
 }

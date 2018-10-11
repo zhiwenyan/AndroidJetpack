@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".room.UserInfoActivity"/>
         <activity android:name=".DataBinding.FoodActivity"/>
+        <activity android:name=".navigation.NavigationActivity">
+        </activity>
     </application>
 
 </manifest>

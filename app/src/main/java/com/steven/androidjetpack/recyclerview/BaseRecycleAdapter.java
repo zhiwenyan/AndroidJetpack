@@ -16,7 +16,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseVie
     private int mLayoutId;
     private List<T> mDatas;
     private LayoutInflater mInflater;
-    private ItemClickListener mItemClickListener;
+    private OnItemClickListener mItemClickListener;
     private MultiTypeSupport mTypeSupport;
 
 
@@ -74,7 +74,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<BaseVie
     }
 
     //点击事件
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
         this.mItemClickListener = itemClickListener;
     }
 
