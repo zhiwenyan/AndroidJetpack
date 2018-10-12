@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.steven.androidjetpack.DataBinding.FoodActivity;
+import com.steven.androidjetpack.DataBinding.FoodListActivity;
+import com.steven.androidjetpack.DataBinding.TwoWayActivity;
 import com.steven.androidjetpack.ViewModel.UserViewModel;
 import com.steven.androidjetpack.lifecycles.LifecycleObserverDemo;
 import com.steven.androidjetpack.liveData.NameViewModel;
@@ -32,7 +34,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_update).setOnClickListener(this);
         findViewById(R.id.btn_room).setOnClickListener(this);
         findViewById(R.id.btn_navigation).setOnClickListener(this);
-        getLifecycle().addObserver(new LifecycleObserverDemo());
+        findViewById(R.id.btn_list_foods).setOnClickListener(this);
+        findViewById(R.id.btn_two_way).setOnClickListener(this);
+        getLifecycle()
+                .addObserver(new LifecycleObserverDemo());
 
 
         //获取ViewModel
@@ -76,6 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_navigation:
                 startActivity(new Intent(this, NavigationActivity.class));
+                break;
+            case R.id.btn_list_foods:
+                startActivity(new Intent(this, FoodListActivity.class));
+                break;
+            case R.id.btn_two_way:
+                startActivity(new Intent(this, TwoWayActivity.class));
 
                 break;
         }

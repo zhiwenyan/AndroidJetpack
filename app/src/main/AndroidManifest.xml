@@ -21,6 +21,12 @@
         <activity android:name=".DataBinding.FoodActivity"/>
         <activity android:name=".navigation.NavigationActivity">
         </activity>
+        <activity android:name=".workManager.WorkManagerActivity">
+        </activity>
+        <activity android:name=".DataBinding.FoodListActivity">
+        </activity>
+        <activity android:name=".DataBinding.TwoWayActivity">
+        </activity>
     </application>
 
 </manifest>

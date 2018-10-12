@@ -16,6 +16,12 @@ public class FoodActivity extends AppCompatActivity {
         Food food = new Food();
         food.setName("面包");
         food.setPrice(2.0);
+        //Bind UI
         binding.setFood(food);
+
+
+        binding.btnBuy.setOnClickListener(v -> food.setPrice(3.0));
+
+
     }
 }
