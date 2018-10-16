@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.steven.androidjetpack">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".BasicApp"
         android:allowBackup="true"
@@ -26,6 +27,11 @@
         <activity android:name=".DataBinding.FoodListActivity">
         </activity>
         <activity android:name=".DataBinding.TwoWayActivity">
+        </activity>
+
+        <activity
+            android:name=".example.MovieActivity"
+            android:label="豆瓣评分Top榜单">
         </activity>
     </application>
 

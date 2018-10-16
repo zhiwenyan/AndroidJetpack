@@ -13,6 +13,7 @@ import com.steven.androidjetpack.DataBinding.FoodActivity;
 import com.steven.androidjetpack.DataBinding.FoodListActivity;
 import com.steven.androidjetpack.DataBinding.TwoWayActivity;
 import com.steven.androidjetpack.ViewModel.UserViewModel;
+import com.steven.androidjetpack.example.MovieActivity;
 import com.steven.androidjetpack.lifecycles.LifecycleObserverDemo;
 import com.steven.androidjetpack.liveData.NameViewModel;
 import com.steven.androidjetpack.navigation.NavigationActivity;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_navigation).setOnClickListener(this);
         findViewById(R.id.btn_list_foods).setOnClickListener(this);
         findViewById(R.id.btn_two_way).setOnClickListener(this);
+        findViewById(R.id.btn_dagger).setOnClickListener(this);
+        findViewById(R.id.btn_movie).setOnClickListener(this);
         getLifecycle()
                 .addObserver(new LifecycleObserverDemo());
 
@@ -87,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_two_way:
                 startActivity(new Intent(this, TwoWayActivity.class));
+                break;
+            case R.id.btn_dagger:
+                break;
+            case R.id.btn_movie:
+                startActivity(new Intent(this, MovieActivity.class));
 
                 break;
         }

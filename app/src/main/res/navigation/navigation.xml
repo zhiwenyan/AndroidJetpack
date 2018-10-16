@@ -57,6 +57,7 @@
         android:name="com.steven.androidjetpack.navigation.Match"
         android:label="fragment_match"
         tools:layout="@layout/fragment_match">
+
         <action
             android:id="@+id/action_match_to_in_game"
             app:destination="@id/in_game"
