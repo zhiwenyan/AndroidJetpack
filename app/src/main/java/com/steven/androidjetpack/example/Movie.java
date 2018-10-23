@@ -3,7 +3,7 @@ package com.steven.androidjetpack.example;
 import java.util.List;
 
 
-public class Subject {
+public class Movie {
 
     private String id;
     private String alt;

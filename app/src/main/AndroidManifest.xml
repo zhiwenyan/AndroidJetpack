@@ -3,6 +3,7 @@
           package="com.steven.androidjetpack">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".BasicApp"
         android:allowBackup="true"
@@ -28,10 +29,11 @@
         </activity>
         <activity android:name=".DataBinding.TwoWayActivity">
         </activity>
-
         <activity
             android:name=".example.MovieActivity"
             android:label="豆瓣评分Top榜单">
+        </activity>
+        <activity android:name=".DataBinding.LambdaActivity">
         </activity>
     </application>
 

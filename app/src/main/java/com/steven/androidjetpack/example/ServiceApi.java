@@ -12,5 +12,5 @@ import retrofit2.http.Query;
 
 public interface ServiceApi {
     @GET("top250")
-    Call<HttpResult<List<Subject>>> getTopMovie(@Query("start") int start, @Query("count") int count);
+    Call<HttpResult<List<Movie>>> getTopMovie(@Query("start") int start, @Query("count") int count);
 }

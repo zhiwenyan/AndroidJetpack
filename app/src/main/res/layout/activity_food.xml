@@ -6,6 +6,8 @@
     <!--UI数据绑定-->
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="food"
             type="com.steven.androidjetpack.DataBinding.Food"/>
@@ -47,12 +49,14 @@
                 android:id="@+id/btn_buy"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="加价"/>
+                android:text="加价"
+                android:visibility="@{food.price>10?View.GONE:View.VISIBLE}"/>
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@{1>2?2:1}"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="热卖"
+                android:visibility="@{food.isHot?View.VISIBLE:View.GONE}"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".example.MovieActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.steven.androidjetpack.example.MovieViewModel">
+        </variable>
+    </data>
+
+    <com.steven.androidjetpack.example.ScrollChildSwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+        android:onRefresh="@{viewModel}"
+        app:refreshing="@{viewModel.dataLoading}">
 
-
-    </android.support.v7.widget.RecyclerView>
-
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@{viewModel.items}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+        </android.support.v7.widget.RecyclerView>
+    </com.steven.androidjetpack.example.ScrollChildSwipeRefreshLayout>
+</layout>

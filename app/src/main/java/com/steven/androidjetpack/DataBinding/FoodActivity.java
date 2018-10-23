@@ -15,11 +15,10 @@ public class FoodActivity extends AppCompatActivity {
         ActivityFoodBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_food);
         Food food = new Food();
         food.setName("面包");
-        food.setPrice(2.0);
+        food.setPrice(12.0);
+        food.setHot(true);
         //Bind UI
         binding.setFood(food);
-
-
         binding.btnBuy.setOnClickListener(v -> food.setPrice(3.0));
 
 

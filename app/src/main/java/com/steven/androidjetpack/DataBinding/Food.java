@@ -2,11 +2,13 @@ package com.steven.androidjetpack.DataBinding;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.ObservableBoolean;
+
 import com.steven.androidjetpack.BR;
 
 
 /**
- * Description:
+ * Description:BaseObservable 双向绑定 数据及时更新
  * Data：9/26/2018-5:00 PM
  *
  * @author yanzhiwen
@@ -15,12 +17,22 @@ public class Food extends BaseObservable {
     private String name;
     private double price;
     private String url;
+    private ObservableBoolean isHot=new ObservableBoolean();
+
     public Food() {
+        isHot.set(false);
+
     }
 
     public Food(String name, double price) {
         this.name = name;
         this.price = price;
+        isHot.set(false);
+    }
+
+
+    public ObservableBoolean getIsHot() {
+        return isHot;
     }
 
     @Bindable
@@ -32,6 +44,7 @@ public class Food extends BaseObservable {
         this.name = name;
         notifyPropertyChanged(BR.name);
     }
+
     @Bindable
     public double getPrice() {
         return price;
@@ -49,5 +62,9 @@ public class Food extends BaseObservable {
 
     public String getUrl() {
         return url;
+    }
+
+    public void setHot(boolean hot) {
+        isHot.set(hot);
     }
 }
