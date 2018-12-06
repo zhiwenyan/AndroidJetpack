@@ -18,6 +18,7 @@ package com.steven.androidjetpack.example;
 
 import android.databinding.BindingAdapter;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 
 public class SwipeRefreshLayoutDataBinding {
 
@@ -26,15 +27,31 @@ public class SwipeRefreshLayoutDataBinding {
      * <p>
      * Creates the {@code android:onRefresh} for a {@link SwipeRefreshLayout}.
      */
-    @BindingAdapter("android:onRefresh")
+    @BindingAdapter("onRefresh")
     public static void setSwipeRefreshLayoutOnRefreshListener(ScrollChildSwipeRefreshLayout view,
-            final MovieViewModel viewModel) {
+                                                              final MovieViewModel viewModel) {
         view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                viewModel.getMovies(0,20,true);
+                viewModel.getMovies();
+            }
+        });
+
+    }
+
+    @BindingAdapter("onLoadMore")
+    public static void setSwipeRefreshOnLoadMoreListener(ScrollChildSwipeRefreshLayout view, final MovieViewModel viewModel) {
+        RecyclerView recyclerView = ( RecyclerView ) view.getChildAt(1);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //recyclerView.canScrollVertically(-1) 判断是否滑动到了头部，是的话返回false
+                //recyclerView.canScrollVertically(1) 判断是否滑动到了底部，是的话返回false
+                if (!recyclerView.canScrollVertically(1)) {
+                    viewModel.loadMoreMovies();
+                }
             }
         });
     }
-
 }

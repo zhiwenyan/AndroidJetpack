@@ -46,7 +46,7 @@ public class UserViewModel extends AndroidViewModel {
         private final Application mApplication;
         private final UserRepository mRepository;
 
-        Factory(@NonNull Application application) {
+       public Factory(@NonNull Application application) {
             mApplication = application;
             mRepository = (( BasicApp ) application).getRepository();
         }

@@ -25,7 +25,7 @@ public class MovieRepository {
         return sInstance;
     }
 
-    public void getTopMovie(int start, int count, LoadMovieCallback callback) {
+    public void getTopMovie(int start, int count, LoadMovieCallback<List<Movie>> callback) {
         mServiceApi.getTopMovie(start, count).enqueue(new Callback<HttpResult<List<Movie>>>() {
             @Override
             public void onResponse(@NonNull Call<HttpResult<List<Movie>>> call,

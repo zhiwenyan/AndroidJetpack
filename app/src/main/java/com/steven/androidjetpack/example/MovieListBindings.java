@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.steven.androidjetpack.example.base.BaseBindingAdapter;
 
 import java.util.List;
 
@@ -17,18 +18,19 @@ import java.util.List;
 public class MovieListBindings {
 
     @SuppressWarnings("unchecked")
-    @BindingAdapter("app:items")
+    @BindingAdapter("items")
     public static void setItems(RecyclerView recyclerView, List<Movie> movies) {
-        MovieListAdapter adapter = ( MovieListAdapter ) recyclerView.getAdapter();
+        BaseBindingAdapter adapter = ( BaseBindingAdapter ) recyclerView.getAdapter();
         if (adapter != null) {
             adapter.addAll(movies);
         }
     }
 
-    @BindingAdapter("app:url")
-            public static void setImageViewByUrl(ImageView imageView, String url) {
+    @BindingAdapter("url")
+    public static void setImageViewByUrl(ImageView imageView, String url) {
         Glide.with(imageView.getContext())
                 .load(url)
                 .into(imageView);
     }
+
 }

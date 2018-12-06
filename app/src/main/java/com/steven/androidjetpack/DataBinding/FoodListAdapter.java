@@ -64,7 +64,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<BindingViewHolder> {
     }
 
     public void add(Food food) {
-        mFoods.add(0,food);
+        mFoods.add(0, food);
         notifyItemInserted(0);
     }
 

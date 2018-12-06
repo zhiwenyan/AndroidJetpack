@@ -1,10 +1,10 @@
 package com.steven.androidjetpack.example;
 
-import android.arch.lifecycle.ViewModel;
+import android.databinding.BaseObservable;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
 
-import java.util.List;
+import com.steven.androidjetpack.BR;
 
 /**
  * Description:
@@ -12,27 +12,32 @@ import java.util.List;
  *
  * @author yanzhiwen
  */
-public class MovieViewModel extends ViewModel {
-    //    public LiveData<List<Movie>> getLiveData(int start, int count) {
-//        return MovieRepository.getInstance().getTopMovie();
-//    }
+public class MovieViewModel extends BaseObservable {
+    private int start = 20;
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
-
     public final ObservableArrayList<Movie> items = new ObservableArrayList<>();
 
-    public void getMovies(int start, int count, boolean showLoading) {
+    public void getMovies() {
+        loadMovie(0, true, false);
+    }
+
+    public void loadMoreMovies() {
+        loadMovie(start, false, true);
+        this.start += 20;
+    }
+
+    private void loadMovie(int start, boolean showLoading, boolean loadMore) {
         if (showLoading) {
             dataLoading.set(true);
         }
-        MovieRepository.getInstance().getTopMovie(start, count, new LoadMovieCallback<List<Movie>>() {
-            @Override
-            public void onMovieLoaded(List<Movie> movies) {
-                items.clear();
-                items.addAll(movies);
-                if (showLoading) {
-                    dataLoading.set(false);
-                }
+        MovieRepository.getInstance().getTopMovie(start, 20, movies -> {
+            if (showLoading) {
+                dataLoading.set(false);
             }
+            items.clear();
+            items.addAll(movies);
+            notifyPropertyChanged(BR.viewModel);
+
         });
     }
 }
