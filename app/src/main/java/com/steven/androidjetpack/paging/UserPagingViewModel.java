@@ -33,6 +33,7 @@ public class UserPagingViewModel extends AndroidViewModel {
         mObservableUsers = new LivePagedListBuilder<>(mUserRepository.getAllUserByName(), new PagedList.Config.Builder()
                 .setPageSize(PAGE_SIZE)
                 .setEnablePlaceholders(true)
+                .setInitialLoadSizeHint(PAGE_SIZE * 2)
                 .build()).build();
     }
 
@@ -48,14 +49,14 @@ public class UserPagingViewModel extends AndroidViewModel {
 
         public Factory(@NonNull Application application) {
             this.mApplication = application;
-            mRepository = (( BasicApp ) application).getRepository();
+            mRepository = ((BasicApp) application).getRepository();
         }
 
         @NonNull
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
             //noinspection unchecked
-            return ( T ) new UserPagingViewModel(mApplication, mRepository);
+            return (T) new UserPagingViewModel(mApplication, mRepository);
         }
     }
 }

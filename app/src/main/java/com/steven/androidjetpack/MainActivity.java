@@ -9,9 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.steven.androidjetpack.DataBinding.FoodActivity;
-import com.steven.androidjetpack.DataBinding.FoodListActivity;
-import com.steven.androidjetpack.DataBinding.TwoWayActivity;
 import com.steven.androidjetpack.ViewModel.UserViewModel;
 import com.steven.androidjetpack.example.MovieActivity;
 import com.steven.androidjetpack.lifecycles.LifecycleObserverDemo;
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mViewModel.getCurrentName().setValue(anotherName);
                 break;
             case R.id.btn_food:
-                startActivity(new Intent(this, FoodActivity.class));
+             //   startActivity(new Intent(this, FoodActivity.class));
                 break;
             case R.id.btn_room:
                 startActivity(new Intent(this, UserInfoActivity.class));
@@ -86,10 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, NavigationActivity.class));
                 break;
             case R.id.btn_list_foods:
-                startActivity(new Intent(this, FoodListActivity.class));
+             //   startActivity(new Intent(this, FoodListActivity.class));
                 break;
             case R.id.btn_two_way:
-                startActivity(new Intent(this, TwoWayActivity.class));
+           //     startActivity(new Intent(this, TwoWayActivity.class));
                 break;
             case R.id.btn_dagger:
                 break;

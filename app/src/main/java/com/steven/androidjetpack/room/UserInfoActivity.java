@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
+import com.steven.androidjetpack.BasicApp;
 import com.steven.androidjetpack.R;
 import com.steven.androidjetpack.recyclerview.BaseRecycleAdapter;
 import com.steven.androidjetpack.recyclerview.BaseViewHolder;
@@ -26,7 +27,7 @@ public class UserInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
         mRecyclerView = findViewById(R.id.recycler_view);
         UserViewModel.Factory factory = new UserViewModel.Factory(this.getApplication());
-        mViewModel = ViewModelProviders.of(this,factory).get(UserViewModel.class);
+        mViewModel = ViewModelProviders.of(this, factory).get(UserViewModel.class);
         subscribeUi();
 
     }
@@ -41,7 +42,9 @@ public class UserInfoActivity extends AppCompatActivity {
                 }
             }
         };
-        mViewModel.getObservableUsers().observe(this,observer);
+        mViewModel.getObservableUsers().observe(this, observer);
+        User user = ((BasicApp) this.getApplication()).getRepository().getUserByName("Xanadu");
+        System.out.println("user=" + user);
 //        mViewModel.getObservableUsers().observe(this, new Observer<PagedList<User>>() {
 //            @Override
 //            public void onChanged(@Nullable PagedList<User> users) {
@@ -58,7 +61,7 @@ public class UserInfoActivity extends AppCompatActivity {
 //        mRecyclerView.setAdapter(userAdapter);
 //    }
 
-     static class UserAdapter extends BaseRecycleAdapter<User> {
+    static class UserAdapter extends BaseRecycleAdapter<User> {
 
         public UserAdapter(Context context, List<User> mDatas, int layoutId) {
             super(context, mDatas, layoutId);
